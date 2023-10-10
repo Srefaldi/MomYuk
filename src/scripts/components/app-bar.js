@@ -134,7 +134,7 @@ class AppBar extends HTMLElement {
             <div class="nav-menu">
                 <li class="nav-menu-item"><a href="/">Home</a></li>
                 <li class="nav-menu-item"><a href="#">Favorite</a></li>
-                <li class="nav-menu-item"><a href="https://github.com/Srefaldi">About</a></li>
+                <li class="nav-menu-item"><a href="https://github.com/Srefaldi">About Us</a></li>
             </div>
             <div class="mobile-nav-toggle">
                 <div class="hamburger-line"></div>
