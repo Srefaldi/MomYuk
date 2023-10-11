@@ -20,7 +20,6 @@ class HeroElement extends HTMLElement {
                 text-align: center;
             }
             
-        
             .hero img {
                 width: 100%;
                 height: auto;
@@ -37,26 +36,12 @@ class HeroElement extends HTMLElement {
             }
         
             .hero-text {
-                font-size: 60px;
+                font-size: 30px;
                 color: white;
                 margin-bottom: 20px;
                 white-space: nowrap; 
                 overflow: hidden; 
                 text-overflow: ellipsis; 
-            }
-            .hero-button {
-                background-color: #0B2447;
-                color: #fff;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 10px;
-                font-size: 18px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-            }
-        
-            .hero-button:hover {
-                background-color: #064663;
             }
             @media screen and (min-width: 1200px) {
                 .hero img {
@@ -65,8 +50,10 @@ class HeroElement extends HTMLElement {
                 }
             }
         
-            
             @media screen and (max-width: 768px) {
+                .hero img {
+                    min-width: 100%;
+                }
                 
                 .hero-text {
                     font-size: 18px;
@@ -76,10 +63,6 @@ class HeroElement extends HTMLElement {
                     text-overflow: ellipsis; 
                 }
         
-                .hero-button {
-                    font-size: 16px;
-                    padding: 8px 16px;
-                }
             }
             a, button, input, input[type='text'], textarea {
                 min-width: 44px;
@@ -90,7 +73,7 @@ class HeroElement extends HTMLElement {
                 <img src="${imageUrl}" alt="Hero Image">
                 <div class="hero-content">
                     <div class="hero-text">Selamat Datang Di MomYuk</div>
-                    <button class="hero-button">Temukan Resto</button>
+                    
                 </div>
             </div>
         `;

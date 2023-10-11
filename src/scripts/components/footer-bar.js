@@ -12,7 +12,7 @@ class FooterElement extends HTMLElement {
         this.shadowRoot.innerHTML = `
         <style>
         
-            /* Styles for the footer */
+            
             .footer {
                 bottom: 0;
                 background-color: #0B2447;
