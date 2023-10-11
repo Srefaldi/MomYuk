@@ -6,30 +6,24 @@ class AppBar extends HTMLElement {
 
     connectedCallback() {
         this.render();
-
-       
-        this.mobileNavToggle = this.shadowDOM.querySelector(".mobile-nav-toggle");
-        this.mobileNav = this.shadowDOM.querySelector(".mobile-nav");
-        this.mobileNavActive = false; 
         this.setupEventListeners();
     }
 
     render() {
         this.shadowDOM.innerHTML = `
         <style>
-            
-        .app-bar {
-            background-color: #0B2447;
-            color: white;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            padding: 10px 0;
-            width: 100%;
-            position: fixed; 
-            top: 0; 
-            z-index: 1000; 
-        }
+            .app-bar {
+                background-color: #0B2447;
+                color: white;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                padding: 10px 0;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                z-index: 1000;
+            }
             .brand-logo {
                 font-size: 24px;
                 font-weight: bold;
@@ -66,7 +60,7 @@ class AppBar extends HTMLElement {
             }
             .mobile-nav.active {
                 left: 0;
-                z-index: 2000; 
+                z-index: 2000;
             }
             .mobile-nav-toggle {
                 display: none;
@@ -105,24 +99,24 @@ class AppBar extends HTMLElement {
                 color: white;
                 font-size: 18px;
             }
-           
+
             @media screen and (max-width: 768px) {
                 .app-bar {
-                position: fixed;
-                z-index: 2000; 
-                    }
+                    position: fixed;
+                    z-index: 2000;
+                }
                 .brand-logo {
-                    text-align: center; 
-                    padding-left: 0; 
-                 }
+                    text-align: center;
+                    padding-left: 0;
+                }
                 .nav-menu {
-                    display: none; 
-                 }
+                    display: none;
+                }
                 .mobile-nav-toggle {
-                    display: block; 
-                    
+                    display: block;
                 }
             }
+
             a, button, input, input[type='text'], textarea {
                 min-width: 44px;
                 min-height: 44px;
@@ -142,9 +136,8 @@ class AppBar extends HTMLElement {
                 <div class="hamburger-line"></div>
             </div>
         </nav>
-            
+
         <div class="mobile-nav" id="mobileNav">
-     
             <ul class="nav-menu-mobile">
                 <li><a href="/">Home</a></li>
                 <li><a href="#">Favorite</a></li>
@@ -152,13 +145,31 @@ class AppBar extends HTMLElement {
             </ul>
         </div>
     `;
+
+        this.mobileNavToggle = this.shadowDOM.querySelector(".mobile-nav-toggle");
+        if (this.mobileNavToggle) {
+            this.mobileNavToggle.tabIndex = 0;
+        }
     }
 
     setupEventListeners() {
-        this.mobileNavToggle.addEventListener("click", () => {
-            this.mobileNavActive = !this.mobileNavActive;
-            this.updateMobileNavVisibility();
-        });
+        
+        this.mobileNavToggle = this.shadowDOM.querySelector(".mobile-nav-toggle");
+        if (this.mobileNavToggle) {
+            this.mobileNavToggle.addEventListener("click", () => {
+                this.mobileNavActive = !this.mobileNavActive;
+                this.updateMobileNavVisibility();
+            });
+
+            
+            this.mobileNavToggle.addEventListener("keydown", (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    this.mobileNavActive = !this.mobileNavActive;
+                    this.updateMobileNavVisibility();
+                }
+            });
+        }
 
         window.addEventListener("resize", () => {
             if (window.innerWidth >= 768) {
@@ -169,20 +180,18 @@ class AppBar extends HTMLElement {
     }
 
     updateMobileNavVisibility() {
+        const mobileNav = this.shadowDOM.querySelector(".mobile-nav");
+        const brandLogo = this.shadowDOM.querySelector(".brand-logo");
+
         if (this.mobileNavActive) {
-            this.mobileNav.classList.add("active");
-            this.shadowDOM.querySelector(".brand-logo").classList.add("active");
-         
-            
+            mobileNav.classList.add("active");
+            brandLogo.classList.add("active");
         } else {
-            this.mobileNav.classList.remove("active");
-            this.shadowDOM.querySelector(".brand-logo").classList.remove("active");
-            
+            mobileNav.classList.remove("active");
+            brandLogo.classList.remove("active");
             document.body.style.filter = "none";
         }
     }
-    
-    
 }
 
 customElements.define("nav-bar", AppBar);

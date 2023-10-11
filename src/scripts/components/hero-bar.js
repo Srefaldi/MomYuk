@@ -16,10 +16,10 @@ class HeroElement extends HTMLElement {
             .hero {
                 position: relative;
                 width: 100%;
-                max-width: 100%;
                 overflow: hidden;
-                text-align: center; /* Tengahkan teks */
+                text-align: center;
             }
+            
         
             .hero img {
                 width: 100%;
@@ -57,6 +57,12 @@ class HeroElement extends HTMLElement {
         
             .hero-button:hover {
                 background-color: #064663;
+            }
+            @media screen and (min-width: 1200px) {
+                .hero img {
+                    min-width: 1000px;
+                    width: 100%;
+                }
             }
         
             
