@@ -108,41 +108,40 @@ class RestaurantList extends HTMLElement {
         data.restaurants.forEach(restaurantData => {
             const restaurantCard = document.createElement('div');
             restaurantCard.setAttribute('class', 'restaurant-card');
-        
+            restaurantCard.setAttribute('tabindex', '0'); 
+
             const restaurantImage = document.createElement('img');
             restaurantImage.setAttribute('class', 'restaurant-image');
             restaurantImage.setAttribute('src', restaurantData.pictureId);
-        
-        
             restaurantImage.setAttribute('alt', restaurantData.name);
-        
+
             const restaurantInfo = document.createElement('div');
             restaurantInfo.setAttribute('class', 'restaurant-info');
-        
+
             const restaurantName = document.createElement('div');
             restaurantName.setAttribute('class', 'restaurant-name');
             restaurantName.textContent = restaurantData.name;
-        
+
             const restaurantCity = document.createElement('div');
             restaurantCity.setAttribute('class', 'restaurant-city');
             restaurantCity.textContent = restaurantData.city;
-        
+
             const restaurantRating = document.createElement('div');
             restaurantRating.setAttribute('class', 'restaurant-rating');
             restaurantRating.textContent = `Rating: ${restaurantData.rating}`;
-        
+
             const restaurantDescription = document.createElement('div');
             restaurantDescription.setAttribute('class', 'restaurant-description');
             restaurantDescription.textContent = restaurantData.description;
-        
+
             restaurantInfo.appendChild(restaurantName);
             restaurantInfo.appendChild(restaurantCity);
             restaurantInfo.appendChild(restaurantRating);
             restaurantInfo.appendChild(restaurantDescription);
-        
+
             restaurantCard.appendChild(restaurantImage);
             restaurantCard.appendChild(restaurantInfo);
-        
+
             container.appendChild(restaurantCard);
         });
 

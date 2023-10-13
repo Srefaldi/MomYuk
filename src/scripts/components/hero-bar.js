@@ -14,10 +14,12 @@ class HeroElement extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
             .hero {
+                display: inline-block;
                 position: relative;
                 width: 100%;
                 overflow: hidden;
                 text-align: center;
+                z-index: 400;
             }
             
             .hero img {
@@ -26,6 +28,7 @@ class HeroElement extends HTMLElement {
                 object-fit: contain;
                 display: flex;
                 transition: transform 0.2s;
+                box-sizing: border-box;
             }
         
             .hero-content {
@@ -46,17 +49,17 @@ class HeroElement extends HTMLElement {
             @media screen and (min-width: 1200px) {
                 .hero img {
                     min-width: 1000px;
-                    width: 100%;
+                    margin: 0 auto;
                 }
             }
         
-            @media screen and (max-width: 768px) {
+            @media screen and (max-width: 1199px) {
                 .hero img {
                     min-width: 100%;
                 }
                 
                 .hero-text {
-                    font-size: 18px;
+                    font-size: 20px;
                     margin-top: 70px;
                     white-space: nowrap; 
                     overflow: hidden; 
@@ -72,7 +75,7 @@ class HeroElement extends HTMLElement {
             <div class="hero">
                 <img src="${imageUrl}" alt="Hero Image">
                 <div class="hero-content">
-                    <div class="hero-text">Selamat Datang Di MomYuk</div>
+                    <div class="hero-text">Selamat Datang Di MamYuk</div>
                     
                 </div>
             </div>
